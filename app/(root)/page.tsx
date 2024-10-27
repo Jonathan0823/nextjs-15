@@ -1,14 +1,12 @@
-import SearchForm from "../components/SearchForm";
+import SearchForm from "../../components/SearchForm";
 
 export default async function Home({
   searchParams,
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
-
   const query = await (await searchParams).query;
   return (
-
     <>
       <section className="pink_container">
         <h1 className="heading">
@@ -18,7 +16,13 @@ export default async function Home({
           Submit Ideas, Vote on Pitches, and Get Noticed in Virtual Competition
         </p>
 
-        <SearchForm query={query}/>
+        <SearchForm query={query} />
+      </section>
+
+      <section className="section_container">
+        <p className="text-30-semibold">
+          {query ? `Search Results for "${query}"` : "Latest Startups"}
+        </p>
       </section>
     </>
   );
